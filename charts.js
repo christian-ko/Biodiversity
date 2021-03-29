@@ -73,24 +73,23 @@ function buildCharts(sample) {
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
 
-    var yticks = otuIds.slice(0, 10);
-    var ysort = yticks.sort((a, b) => a.yticks - a.yticks).reverse();
+    var yticks = otu_ids.slice(0,10).map(otuid => `OTU ${otuid}`).reverse()
 
     // 8. Create the trace for the bar chart. 
-    var trace = [{
-      x: sampleValues,
-      y: ysort,
+    var barData = [{
+      x: sample_values.slice(0,10).reverse(),
+      y: yticks,
+      orientation: "h",
+      text: otu_labels.slice(0,10).reverse(),
       type: "bar",
-      orientation: "h"
     }];
-    var barData = [trace];
-    // 9. Create the layout for the bar chart. 
+        // 9. Create the layout for the bar chart. 
     var barLayout = {
       title: "Top 10 Bacteria Cultures Found",
       xaxis: { title: "OTU IDs" },
       yaxis: { title: "Cultures Found" }     
     };
     // 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("bar-plot");
+    Plotly.newPlot("bar", barData, barLayout);
   });
 }
