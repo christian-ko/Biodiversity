@@ -85,7 +85,10 @@ function buildCharts(sample) {
     }];
         // 9. Create the layout for the bar chart. 
     var barLayout = {
-      title: "Top 10 Bacteria Cultures Found",
+      title: {
+        text: "Top 10 Bacteria Cultures Found",
+        font: {color: "dodgerblue"}
+      },
       xaxis: { title: "OTU IDs" },
       yaxis: { title: "Cultures Found" }     
     };
@@ -106,7 +109,10 @@ function buildCharts(sample) {
 
     // 2. Create the layout for the bubble chart.
     var bubbleLayout = {
-      title: "Bacteria Cultures Per Sample",
+      title: {
+        text: "Bacteria Cultures Per Sample",
+        font: {color: "dodgerblue"}
+      },
       xaxis: { title: "OTU IDs" },
       margin: {
         l: 100,
@@ -135,7 +141,7 @@ function buildCharts(sample) {
       value: washes,
       type: "indicator",
       mode: "gauge+number",
-      title: { text: "<b>Belly Button Washing Frequency</b><br> Scrubs per Week" },
+      title: { text: "<b>Belly Button Washing Frequency</b><br> Scrubs per Week", font: {color: "dodgerblue"} },
       gauge: {
         axis: { range: [null, 10], tickwidth: 1, tickcolor: "darkblue" },
         bar: { color: "darkblue" },
