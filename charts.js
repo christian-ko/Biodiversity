@@ -119,5 +119,40 @@ function buildCharts(sample) {
 
     // 3. Use Plotly to plot the data with the layout.
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
+
+    // 1. Create a variable that filters the metadata array for the object with the desired sample number.
+    var metadata = data.metadata;
+    var filterdata = metadata.filter(sampleObj => sampleObj.id == sample);
+
+    // 2. Create a variable that holds the first sample in the metadata array.
+    var firstSample = filterdata[0];
+
+    // 3. Create a variable that holds the washing frequency.
+    var washes = parseFloat(firstSample.wfreq);
+
+    // 4. Create the trace for the gauge chart.
+    var gaugeData = [{
+      value = washes
+      type = 'indicator',
+      mode = 'gauge+number',
+      title = { text: "<b>Belly Button Washing Frequency</b><br> Scrubs per Week" },
+      gauge: {
+        axis: { range: [null, 10], tickwidth: 1, tickcolor: "darkblue" },
+        bar: { color: "darkblue" },
+        steps: [
+          { range: [0, 2], color: "mediumblue" },
+          { range: [2, 4], color: "dodgerblue" },
+          { range: [4, 6], color: "gold"},
+          { range: [6, 8], color: "orange"},
+          { range: [8, 10], color: "crimson"},
+        ]
+      }
+    }];
+    
+    // 5. Create the layout for the gauge chart.
+    var gaugeLayout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+
+    // 6. Use Plotly to plot the gauge data and layout.
+    Plotly.newPlot('gauge', gaugeData, gaugeLayout);    
   });
 }
