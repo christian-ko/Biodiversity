@@ -140,8 +140,8 @@ function buildCharts(sample) {
         axis: { range: [null, 10], tickwidth: 1, tickcolor: "darkblue" },
         bar: { color: "darkblue" },
         steps: [
-          { range: [0, 2], color: "mediumblue" },
-          { range: [2, 4], color: "dodgerblue" },
+          { range: [0, 2], color: "dodgerblue" },
+          { range: [2, 4], color: "springgreen" },
           { range: [4, 6], color: "gold"},
           { range: [6, 8], color: "orange"},
           { range: [8, 10], color: "crimson"},
