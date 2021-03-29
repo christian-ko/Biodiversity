@@ -98,11 +98,11 @@ function buildCharts(sample) {
       x: otuIds,
       y: sampleValues,
       text: otuLables,
-      mode: 'markers'
+      mode: 'markers',
       marker: {
         color: otuIds,
         size: sampleValues,
-        colorscale: 'Portland'
+        colorscale: 'Portland',
       }
     }];
 
